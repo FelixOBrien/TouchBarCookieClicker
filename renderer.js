@@ -1,4 +1,5 @@
 const { ipcRenderer } = require('electron')
+getData();
 var getData = setInterval(getData, 5000);
 var purchases = ["cursors", "grandmas", "farms", "factories", "banks", "temples", "wizardtowers", "shipments", "alchemylabs", "portals", "timemachines", 
 "antimatters", "prisms", "chancemakers", "fractalengines"];
