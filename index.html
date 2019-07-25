@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Touchbar Clicker</title>
+    </head>
+    <body>
+        <h1 id = "cookies">Cookies: 0 </h1>
+        <h2 id = "cps">Cookies Per Sec: 0</h2>
+        <div id = "purchases"></div>
+        <script>
+const { ipcRenderer } = require('electron')
+getData();
+var getData = setInterval(getData, 5000);
+var purchases = ["cursors", "grandmas", "farms", "factories", "banks", "temples", "wizardtowers", "shipments", "alchemylabs", "portals", "timemachines", 
+"antimatters", "prisms", "chancemakers", "fractalengines"];
+
+function getData(){
+    ipcRenderer.send('getData', {});
+    
+}
+ipcRenderer.on("dataHere", function(e, data){
+    document.getElementById("cookies").innerHTML = "Cookies: " + data.cookies;
+    document.getElementById("cps").innerHTML = "Cookies Per Sec: " + data.cps;
+    var html = "";
+    for(var i =0; i<purchases.length; i++){
+        html += "<p>"+purchases[i] + ": "+ data[purchases[i]]+"</p>"
+    }
+    document.getElementById("purchases").innerHTML = html;
+})
+          </script>
+    </body>
+</html>

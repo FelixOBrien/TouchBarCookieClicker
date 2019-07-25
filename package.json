@@ -1,0 +1,50 @@
+{
+  "name": "touchbarcookieclicker",
+  "version": "1.0.0",
+  "description": "Cookie Clicker for your Touchbar",
+  "main": "touchbar.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron ./app",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^5.0.8",
+    "electron-builder": "^21.1.5"
+  },
+  "build": {
+    "appId": "touchbarclicker",
+   
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "mac":{
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
+  }
+}
